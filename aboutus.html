@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - NEXT</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9900;
+    }
+
+    .hero {
+      background: url('pexels-padrinan-2882509.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2s;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .history, .motivation {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .history h3, .motivation h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .history p, .motivation p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .team-member {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .team-member img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .team-member h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .team-member p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    footer {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ff9900;
+    }
+
+    .social-media {
+      margin-top: 10px;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .team-member img {
+        max-width: 100px;
+      }
+
+      .team-member h4 {
+        font-size: 18px;
+      }
+
+      .team-member p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">NEXT</div>
+      <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="hero-text"></h1>
+      <p>Discover the story behind NEXT, your ultimate navigation solution.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="history">
+      <h3>Our History</h3>
+      <p>NEXT was founded in 2020 with a vision to simplify navigation in railway stations. Our team of experts came together to create a solution that enhances the travel experience for everyone, ensuring accessibility and real-time information.</p>
+    </div>
+
+    <div class="motivation">
+      <h3>Our Motivation</h3>
+      <p>At NEXT, we believe that every traveler deserves a seamless journey. Our motivation stems from the desire to empower individuals with the tools they need to navigate confidently, making travel easier and more enjoyable.</p>
+    </div>
+
+    <h2>Meet the Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src="team-member1.jpg" alt="Team Member 1">
+        <h4>John Doe</h4>
+        <p>Co-Founder & CEO</p>
+      </div>
+      <div class="team-member">
+        <img src="team-member2.jpg" alt="Team Member 2">
+        <h4>Jane Smith</h4>
+        <p>Co-Founder & CTO</p>
+      </div>
+      <div class="team-member">
+        <img src="team-member3.jpg" alt="Team Member 3">
+        <h4>Michael Johnson</h4>
+        <p>Lead Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="team-member4.jpg" alt="Team Member 4">
+        <h4>Emily Davis</h4>
+        <p>UI/UX Designer</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="contact-info">
+        <p>support@next.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 NEXT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const phrases = [
+      "About NEXT",
+      "Our Story",
+      "Meet the Team"
+    ];
+    let currentPhraseIndex = 0;
+
+    function changePhrase() {
+      const heroText = document.getElementById('hero-text');
+      heroText.textContent = "";
+      const phrase = phrases[currentPhraseIndex];
+      let i = 0;
+
+      const typingInterval = setInterval(() => {
+        heroText.textContent += phrase.charAt(i);
+        i++;
+        if (i === phrase.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            changePhrase();
+          }, 2000);
+        }
+      }, 100);
+    }
+
+    changePhrase();
+  </script>
+</body>
+</html>

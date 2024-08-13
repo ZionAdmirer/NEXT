@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - NEXT</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9900;
+    }
+
+    .hero {
+      background: url('pexels-pixabay-164686.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2s;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+      z-index: 1;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #ffcc00;
+      outline: none;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #ff9900;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      width: 100%;
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn:hover {
+      background-color: #e68a00;
+      transform: translateY(-2px);
+    }
+
+    .additional-features {
+      margin-top: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .additional-features h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ff9900;
+    }
+
+    .social-media {
+      margin-top: 10px;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .feature-card img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .feature-card h3 {
+        font-size: 18px;
+      }
+
+      .feature-card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">NEXT</div>
+      <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="hero-text"></h1>
+      <p>Create your NEXT account and start enjoying a personalized travel experience.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Register</h2>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Create Account</button>
+    </form>
+
+    <div class="additional-features">
+      <h3>Additional Features</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <img src="save-preferences.svg" alt="Save Preferences">
+          <h3>Save Preferences</h3>
+          <p>Store your preferred settings for a personalized experience.</p>
+        </div>
+        <div class="feature-card">
+          <img src="receive-notifications.svg" alt="Receive Notifications">
+          <h3>Receive Notifications</h3>
+          <p>Get real-time updates on your journeys and platform changes.</p>
+        </div>
+        <div class="feature-card">
+          <img src="access-exclusive-features.svg" alt="Access Exclusive Features">
+          <h3>Access Exclusive Features</h3>
+          <p>Unlock features available only to registered users.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="contact-info">
+        <p>support@next.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 NEXT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const phrases = [
+      "Create Your NEXT Account",
+      "Personalize Your Travel Experience",
+      "Join the NEXT Community"
+    ];
+    let currentPhraseIndex = 0;
+
+    function changePhrase() {
+      const heroText = document.getElementById('hero-text');
+      heroText.textContent = "";
+      const phrase = phrases[currentPhraseIndex];
+      let i = 0;
+
+      const typingInterval = setInterval(() => {
+        heroText.textContent += phrase.charAt(i);
+        i++;
+        if (i === phrase.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            changePhrase();
+          }, 2000);
+        }
+      }, 100);
+    }
+
+    changePhrase();
+
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Registration Successful! Welcome to NEXT.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

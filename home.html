@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXT - Navigate Your Journey Effortlessly</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9900;
+    }
+
+    .hero {
+      background: url('pexels-uwc12-2526935.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #ff9900;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      background-color: #e68a00;
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-container {
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 32px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-description {
+      text-align: center;
+      font-size: 18px;
+      margin: 0 auto 20px;
+      max-width: 800px;
+      line-height: 1.5;
+      padding: 0 10px;
+    }
+
+    .feature-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .feature-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px) rotateY(5deg);
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+      text-align: center;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ff9900;
+    }
+
+    .social-media {
+      margin-top: 10px;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .animated-text {
+      display: inline;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+
+      .feature-card h3 {
+        font-size: 20px;
+      }
+
+      .feature-card p {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">NEXT</div>
+      <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="useraccess.html">User Access</a></li>
+        <li><a href="feedbackandsupport.html">Feedback & Support</a></li>
+        <li><a href="integration.html">Integration</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="hero-text"></h1>
+      <p>Experience seamless navigation with NEXT – your guide in every railway station.</p>
+      <a href="#" class="btn">Get Started</a>
+    </div>
+  </div>
+
+  <main>
+    <div class="section-container">
+      <h2 class="section-title">What is NEXT?</h2>
+      <p class="section-description">NEXT is a comprehensive navigation solution designed to enhance the passenger experience in railway stations. Our platform provides detailed information, real-time navigation, and accessibility features to ensure that every traveler can navigate confidently.</p>
+    </div>
+
+    <div class="section-container">
+      <h2 class="section-title">Key Features</h2>
+      <div class="feature-container">
+        <div class="feature-card">
+          <h3>Interactive Maps</h3>
+          <p>View detailed, interactive 3D maps of the railway station, highlighting key facilities. Access real-time data showing train schedules, platform changes, and facility availability.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Navigation Tools</h3>
+          <p>Input your destination within the station to receive detailed navigation instructions. Features to assist visually impaired users, such as audio instructions.</p>
+        </div>
+        <div class="feature-card">
+          <h3>User Accounts</h3>
+          <p>Create accounts to save preferences, receive notifications, and access personalized travel information.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Feedback Mechanism</h3>
+          <p>Submit feedback about your experience with the navigation system. Access FAQs, contact forms, and live chat options for immediate assistance.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Integration with Other Services</h3>
+          <p>Direct links to download the mobile application and access digital kiosks. Information about train services, ticketing, and other relevant railway operations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <h2 class="section-title">We're Here to Help</h2>
+      <p>Your feedback is crucial for us. Share your experience or report any issues, and access our support resources.</p>
+      <a href="feedbackandsupport.html" class="btn">Give Feedback</a>
+    </div>
+
+    <div class="section-container">
+      <h2 class="section-title">Seamless Integration</h2>
+      <p>NEXT integrates with mobile applications and digital kiosks, providing a unified experience for all travelers.</p>
+      <a href="integration.html" class="btn">Learn More</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="contact-info">
+        <p>support@next.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 NEXT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const phrases = [
+      "Navigate Your Journey Effortlessly",
+      "Experience Seamless Travel",
+      "Your Guide in Every Railway Station"
+    ];
+    let currentPhraseIndex = 0;
+
+    function changePhrase() {
+      const heroText = document.getElementById('hero-text');
+      heroText.textContent = "";
+      const phrase = phrases[currentPhraseIndex];
+      let i = 0;
+
+      const typingInterval = setInterval(() => {
+        heroText.textContent += phrase.charAt(i);
+        i++;
+        if (i === phrase.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            changePhrase();
+          }, 2000);
+        }
+      }, 100);
+    }
+
+    changePhrase();
+
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    window.addEventListener('scroll', () => {
+      featureCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          card.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Access - NEXT</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9900;
+    }
+
+    .hero {
+      background: url('pexels-olly-3765132.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .user-access-overview {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .user-access-overview img {
+      max-width: 400px;
+      margin-right: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .user-access-overview-content h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .user-access-overview-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .account-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .benefit-card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .benefit-card img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .benefit-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ff9900;
+    }
+
+    .social-media {
+      margin-top: 10px;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .user-access-overview {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .user-access-overview img {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .benefit-card img {
+        max-width: 80px;
+      }
+
+      .benefit-card h3 {
+        font-size: 20px;
+      }
+
+      .benefit-card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">NEXT</div>
+      <ul>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <!-- <li><a href="#">User Access</a></li>
+        <li><a href="#">Feedback & Support</a></li>
+        <li><a href="#">Integration</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="hero-text"></h1>
+      <p>Discover the benefits of creating a NEXT user account.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="user-access-overview">
+      <img src="user-access-overview.jpg" alt="User Access Overview">
+      <div class="user-access-overview-content">
+        <h3>NEXT User Access Features</h3>
+        <p>NEXT offers a user account feature that provides personalized benefits to enhance your travel experience. By creating an account, you can save preferences, receive notifications, and access exclusive features.</p>
+        <p>Our user-friendly platform ensures that creating an account is quick and easy, allowing you to start enjoying the benefits immediately.</p>
+      </div>
+    </div>
+
+    <h2>Account Benefits</h2>
+    <div class="account-benefits">
+      <div class="benefit-card">
+        <img src="save-preferences.svg" alt="Save Preferences">
+        <h3>Save Preferences</h3>
+        <p>Store your preferred settings, such as language, accessibility options, and favorite stations, for a more personalized experience.</p>
+      </div>
+      <div class="benefit-card">
+        <img src="receive-notifications.svg" alt="Receive Notifications">
+        <h3>Receive Notifications</h3>
+        <p>Get real-time updates on changes to your scheduled journeys, including platform alterations and service disruptions.</p>
+      </div>
+      <div class="benefit-card">
+        <img src="personalized-recommendations.svg" alt="Personalized Recommendations">
+        <h3>Personalized Recommendations</h3>
+        <p>Receive tailored suggestions for nearby facilities, services, and events based on your preferences and travel history.</p>
+      </div>
+      <div class="benefit-card">
+        <img src="access-exclusive-features.svg" alt="Access Exclusive Features">
+        <h3>Access Exclusive Features</h3>
+        <p>Unlock exclusive features, such as advanced navigation tools and priority support, available only to registered users.</p>
+      </div>
+      <div class="benefit-card">
+        <img src="track-journey-history.svg" alt="Track Journey History">
+        <h3>Track Journey History</h3>
+        <p>Review your past journeys and access detailed information about your travel history, including routes, schedules, and expenses.</p>
+      </div>
+      <div class="benefit-card">
+        <img src="seamless-integration.svg" alt="Seamless Integration">
+        <h3>Seamless Integration</h3>
+        <p>Enjoy a seamless experience as your user account integrates with other services, such as mobile apps and digital kiosks.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="contact-info">
+        <p>support@next.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 NEXT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const phrases = [
+      "NEXT User Access",
+      "Personalized Travel Experience",
+      "Unlock Exclusive Features"
+    ];
+    let currentPhraseIndex = 0;
+
+    function changePhrase() {
+      const heroText = document.getElementById('hero-text');
+      heroText.textContent = "";
+      const phrase = phrases[currentPhraseIndex];
+      let i = 0;
+
+      const typingInterval = setInterval(() => {
+        heroText.textContent += phrase.charAt(i);
+        i++;
+        if (i === phrase.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            changePhrase();
+          }, 2000);
+        }
+      }, 100);
+    }
+
+    changePhrase();
+  </script>
+</body>
+</html>

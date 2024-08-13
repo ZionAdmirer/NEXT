@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration - NEXT</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff9900;
+    }
+
+    .hero {
+      background: url('pexels-fidan-mammadli-721213237-25819603.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .integration-overview {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .integration-overview img {
+      max-width: 400px;
+      margin-right: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .integration-overview-content h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .integration-overview-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .integrated-services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .service-card .btn {
+      display: inline-block;
+      background-color: #ff9900;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 10px;
+    }
+
+    .service-card .btn:hover {
+      background-color: #e68a00;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ff9900;
+    }
+
+    .social-media {
+      margin-top: 10px;
+    }
+
+    .social-media img {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .integration-overview {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .integration-overview img {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .service-card img {
+        max-width: 80px;
+      }
+
+      .service-card h3 {
+        font-size: 20px;
+      }
+
+      .service-card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">NEXT</div>
+      <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="hero-text"></h1>
+      <p>Discover how NEXT integrates with other services to provide a seamless experience.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="integration-overview">
+      <img src="integration-overview.jpg" alt="Integration Overview">
+      <div class="integration-overview-content">
+        <h3>NEXT Integration Capabilities</h3>
+        <p>NEXT is designed to seamlessly integrate with various services, ensuring a unified experience for all travelers. Our platform can be easily integrated with mobile applications, digital kiosks, and other relevant railway operations.</p>
+        <p>By leveraging our integration capabilities, you can provide your users with a comprehensive navigation solution that offers real-time updates, detailed maps, and personalized travel information.</p>
+      </div>
+    </div>
+
+    <h2>Integrated Services</h2>
+    <div class="integrated-services">
+      <div class="service-card">
+        <img src="mobile-app.svg" alt="Mobile App">
+        <h3>Mobile App Integration</h3>
+        <p>NEXT can be integrated with your existing mobile application, providing users with a seamless navigation experience directly from their smartphones.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="digital-kiosk.svg" alt="Digital Kiosk">
+        <h3>Digital Kiosk Integration</h3>
+        <p>Our platform can be integrated with digital kiosks installed in railway stations, allowing users to access navigation tools and real-time information at their fingertips.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="train-services.svg" alt="Train Services">
+        <h3>Train Services Integration</h3>
+        <p>NEXT integrates with train service providers, ensuring that users receive accurate and up-to-date information on schedules, platform changes, and facility availability.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="ticketing.svg" alt="Ticketing">
+        <h3>Ticketing Integration</h3>
+        <p>Our platform can be integrated with ticketing systems, allowing users to access information about their journeys and purchase tickets directly through NEXT.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="accessibility.svg" alt="Accessibility">
+        <h3>Accessibility Integration</h3>
+        <p>NEXT prioritizes accessibility and can be integrated with assistive technologies, ensuring that all users, including those with disabilities, can navigate with ease.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="real-time-updates.svg" alt="Real-Time Updates">
+        <h3>Real-Time Updates Integration</h3>
+        <p>Our platform integrates with various data sources to provide real-time updates on train schedules, platform changes, and facility availability, keeping users informed throughout their journey.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+      <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      </div>
+      <div class="contact-info">
+        <p>support@next.com</p>
+        <p>(123) 456-7890</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 NEXT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const phrases = [
+      "NEXT Integration",
+      "Seamless Connectivity",
+      "Unified Travel Experience"
+    ];
+    let currentPhraseIndex = 0;
+
+    function changePhrase() {
+      const heroText = document.getElementById('hero-text');
+      heroText.textContent = "";
+      const phrase = phrases[currentPhraseIndex];
+      let i = 0;
+
+      const typingInterval = setInterval(() => {
+        heroText.textContent += phrase.charAt(i);
+        i++;
+        if (i === phrase.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            changePhrase();
+          }, 2000);
+        }
+      }, 100);
+    }
+
+    changePhrase();
+  </script>
+</body>
+</html>
