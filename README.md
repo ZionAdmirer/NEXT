@@ -18,10 +18,4 @@ NEXT is a modern web application designed to enhance the travel experience by pr
 - Responsive Design
 - Web APIs (for future integrations)
 
-## Installation
 
-To run the NEXT website locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/next-website.git
